@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CircularSlider" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-aJ-Vyh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MhH-2u-myz" customClass="CircularSlider" customModule="CircularSlider" customModuleProvider="target">
+                                <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="SVu-f5-g8o"/>
+                                    <constraint firstAttribute="width" secondItem="MhH-2u-myz" secondAttribute="height" multiplier="1:1" id="rtv-AX-wFV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="sliderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="sliderColor">
+                                        <color key="value" red="0.30196078430000001" green="0.59999999999999998" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="handleColor">
+                                        <color key="value" red="0.99469476940000001" green="0.41517350865019992" blue="0.51820129894024392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="handleSize">
+                                        <real key="value" value="37"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="sliderValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MpV-Pz-TFg">
+                                <rect key="frame" x="0.0" y="576" width="375" height="91"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="QNf-EZ-Daz"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vAh-9b-Ini">
+                                    <size key="itemSize" width="80" height="79"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="z5U-dJ-tHD" customClass="LibraryImageCollectionViewCell" customModule="CircularSlider" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6" width="80" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-4S-22O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="79"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="I3j-4S-22O" secondAttribute="bottom" id="0WE-iv-0OG"/>
+                                            <constraint firstItem="I3j-4S-22O" firstAttribute="top" secondItem="z5U-dJ-tHD" secondAttribute="top" id="5a6-fR-cSm"/>
+                                            <constraint firstAttribute="trailing" secondItem="I3j-4S-22O" secondAttribute="trailing" id="AYv-7D-abO"/>
+                                            <constraint firstItem="I3j-4S-22O" firstAttribute="leading" secondItem="z5U-dJ-tHD" secondAttribute="leading" id="Ow9-h6-yRF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="I3j-4S-22O" id="XoV-PR-ROS"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Ik-aJ-Vyh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3en-TK-ugv"/>
+                            <constraint firstItem="9Ik-aJ-Vyh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6el-8Z-gkU"/>
+                            <constraint firstItem="9Ik-aJ-Vyh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bzh-rU-Qh5"/>
+                            <constraint firstItem="MhH-2u-myz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jli-K4-m9h"/>
+                            <constraint firstItem="MpV-Pz-TFg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NAA-An-q2z"/>
+                            <constraint firstItem="MhH-2u-myz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OfP-2T-blo"/>
+                            <constraint firstItem="MpV-Pz-TFg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bM3-6B-N9g"/>
+                            <constraint firstItem="MpV-Pz-TFg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ffw-BE-tPi"/>
+                            <constraint firstItem="9Ik-aJ-Vyh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xwk-a2-h58"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="9Ik-aJ-Vyh" id="ewJ-Ox-shv"/>
+                        <outlet property="circularSlider" destination="MhH-2u-myz" id="QDV-Je-c73"/>
+                        <outlet property="libraryCollectionView" destination="MpV-Pz-TFg" id="tDs-xd-1KC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
