@@ -25,6 +25,17 @@ class CircularSlider: UIView {
     private var handleRect:CGRect = .zero
     private var sliderDiameter: CGFloat = 0.0
     
+    private struct Constants {
+        static let panXYOffset: CGFloat = 50.0
+        static let panScaleOffset: CGFloat = 100.0
+        static let rightAngle: CGFloat = 90.0
+        static let straightAngle: CGFloat = 180.0
+        static let abtuseAngle: CGFloat = 270.0
+        static let valueFormat: String = "%.0f"
+        static let affineScaleXY: CGFloat = 0.75
+        static let halfDivider: Double = 2.0
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -42,6 +53,7 @@ class CircularSlider: UIView {
         self.isUserInteractionEnabled = true
     }
     
+    //MARK: - Inspectables
     @IBInspectable
     var sliderValue:Double = 0.0 {
         didSet {
@@ -77,11 +89,12 @@ class CircularSlider: UIView {
         }
     }
 
+    //MARK: - Rendering Methods
     override func draw(_ rect: CGRect) {
         
         sliderDiameter = (rect.width - 105.0)
 
-        let paddedRect = CGRect(x: rect.origin.x + 50.0, y: rect.origin.y + 50, width: rect.width - 100.0, height: rect.height - 100.0)
+        let paddedRect = CGRect(x: rect.origin.x + Constants.panXYOffset, y: rect.origin.y + Constants.panXYOffset, width: rect.width - Constants.panScaleOffset, height: rect.height - Constants.panScaleOffset)
         let sliderPath = UIBezierPath(ovalIn: paddedRect)
         sliderPath.lineWidth = self.sliderWidth;
         self.sliderColor.setStroke()
@@ -89,17 +102,18 @@ class CircularSlider: UIView {
         
         drawHandle(atAngle:self.sliderValue)
         
-        let transform = CGAffineTransform(rotationAngle: CGFloat(-90.0 * Double.pi / 180.0))
+        let transform = CGAffineTransform(rotationAngle: (-Constants.rightAngle * CGFloat(Double.pi)) / Constants.straightAngle)
         self.transform = transform;
     }
     
     func drawHandle(atAngle angle:Double) {
 
-        let xOffset = Double(sliderDiameter) / 2.0 * cos(-angle * Double.pi/180)
-        let yOffset = Double(sliderDiameter) / 2.0 * sin(-angle * Double.pi/180)
-        
-        self.handleRect = CGRect(x: self.bounds.width/2.0 - self.handleSize/2.0 + CGFloat(xOffset),
-                                y: self.bounds.height/2.0 - self.handleSize/2.0 - CGFloat(yOffset),
+        let xOffset = Double(sliderDiameter) / Constants.halfDivider * cos(-angle * Double.pi/Double(Constants.straightAngle))
+        let yOffset = Double(sliderDiameter) / Constants.halfDivider * sin(-angle * Double.pi/Double(Constants.straightAngle))
+        let hDivider = CGFloat(Constants.halfDivider)
+        let handleSize = self.handleSize / hDivider
+        self.handleRect = CGRect(x: self.bounds.width / hDivider - handleSize + CGFloat(xOffset),
+                                 y: self.bounds.height / hDivider - handleSize - CGFloat(yOffset),
                                 width: self.handleSize,
                                 height: self.handleSize)
         
@@ -109,7 +123,7 @@ class CircularSlider: UIView {
         self.handleColor.setFill()
         handlePath.fill()
 
-        let valueString:String = String(format: "%.0f", angle)
+        let valueString:String = String(format: Constants.valueFormat, angle)
 
         if (valueLabel == nil) {
             valueLabel = UILabel(frame: self.handleRect)
@@ -120,12 +134,12 @@ class CircularSlider: UIView {
             valueLabel!.frame = handleRect
         }
         
-        let transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        let transform = CGAffineTransform(scaleX: Constants.affineScaleXY, y: Constants.affineScaleXY)
         valueLabel!.adjustsFontSizeToFitWidth = true
         valueLabel!.textColor = .white
         valueLabel!.text = valueString
         
-        let labelTransform = CGAffineTransform(rotationAngle: CGFloat(90.0 * Double.pi / 180.0))
+        let labelTransform = CGAffineTransform(rotationAngle: Constants.rightAngle * CGFloat(Float.pi) / Constants.straightAngle)
         valueLabel?.transform = transform.concatenating(labelTransform);
     }
     
@@ -146,18 +160,17 @@ class CircularSlider: UIView {
         case .changed:
             if self.handleSelected {
                 
-                let x = location.x - self.frame.size.width / 2.0
-                let y = location.y - self.frame.size.height / 2.0
+                let x = location.x - self.frame.size.width / CGFloat(Constants.halfDivider)
+                let y = location.y - self.frame.size.height / CGFloat(Constants.halfDivider)
                 
-                var angle = atan(y/x) * CGFloat(180.0 / Double.pi)
-                
+                var angle = atan(y/x) * (Constants.straightAngle / CGFloat(Float.pi))
                 if x >= 0 && y < 0 {
-                    angle = (90 + angle) + 270
+                    angle = (Constants.rightAngle + angle) + Constants.abtuseAngle
                 } else if x <= 0 && y > 0 {
                     if angle > 0 { angle = -angle }
-                    angle = (90 + angle) + 90
+                    angle = (Constants.rightAngle + angle) + Constants.rightAngle
                 } else if x < 0 && y <= 0 {
-                    angle = 180 + angle
+                    angle = Constants.straightAngle + angle
                 }
                 
                 self.sliderValue = Double(angle)
@@ -187,5 +200,3 @@ class CircularSlider: UIView {
         }
     }
 }
-
-
