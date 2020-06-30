@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9A12ACE24AAD518003D14F1 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A12ACD24AAD518003D14F1 /* screenshot.png */; };
 		E9A7639620BB9EBC00892158 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A7639520BB9EBC00892158 /* Photos.framework */; };
 		E9A7639A20BBAC1400892158 /* LibraryImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7639920BBAC1400892158 /* LibraryImageCollectionViewCell.swift */; };
 		E9C650D520BA4B6800CD99A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C650D420BA4B6800CD99A4 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9A12ACD24AAD518003D14F1 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		E9A7639520BB9EBC00892158 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		E9A7639920BBAC1400892158 /* LibraryImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9C650D120BA4B6800CD99A4 /* CircularSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircularSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 		E9C650D320BA4B6800CD99A4 /* CircularSlider */ = {
 			isa = PBXGroup;
 			children = (
+				E9A12ACD24AAD518003D14F1 /* screenshot.png */,
 				E9A7639820BBA75D00892158 /* ViewControllers */,
 				E9A7639720BBA75900892158 /* Views */,
 				E9C650D420BA4B6800CD99A4 /* AppDelegate.swift */,
@@ -159,6 +162,7 @@
 				E9C650DF20BA4B6A00CD99A4 /* LaunchScreen.storyboard in Resources */,
 				E9C650DC20BA4B6A00CD99A4 /* Assets.xcassets in Resources */,
 				E9C650DA20BA4B6800CD99A4 /* Main.storyboard in Resources */,
+				E9A12ACE24AAD518003D14F1 /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
